@@ -2,23 +2,9 @@
 #include<string>
 using namespace std;
 
-// Representation of a Real life car 
-class car{
-    public:
-    // virtual keyword : It decleares the method not defining it 
-    virtual void startEngine() = 0;
-    virtual void shiftGear(int gear) = 0;
-    virtual void accelerate() = 0;
-    virtual void brake() = 0;
-    virtual void stopEngine() = 0;
-
-   virtual ~ car(){
-   }
-};
-
-class sportsCar : public car {
-    public:
-    // Apply charactersticts of the car 
+class sportsCar{
+   private:
+    // charactersticts 
     string brand;
     string model;
     bool isEngineOn;
@@ -26,6 +12,7 @@ class sportsCar : public car {
     int currentGear;
 
     // constructor 
+    public:
     sportsCar(string b, string m){
         this->brand = b;
         this->model = m;
@@ -34,7 +21,14 @@ class sportsCar : public car {
         currentGear = 0;
     }
 
+    // Getters and setters - used to set the value of private members (setters) and used to get the value of private members (getters)
 
+  
+    int get_currentspeed(){
+        return this->currentspeed;
+    }
+
+    // Behaviours --> Methods 
     void startEngine(){
         isEngineOn = true;
         cout<<" Engine on with  roar "<<endl;
@@ -73,18 +67,22 @@ class sportsCar : public car {
         cout<<" Engine turned off "<<endl;
     }
 
+
 };
+
 
 // Main Function 
 int main(){
+    sportsCar * mysportsCar = new sportsCar(" Ford ", " Mustang ");
+    mysportsCar->startEngine();
+    mysportsCar->shiftGear(1);
+    mysportsCar->accelerate();
+    mysportsCar->brake();
+    mysportsCar->stopEngine();
 
-    car * mycar  = new sportsCar(" Ford" , "Mustang ");
-    mycar->startEngine();
-    mycar->shiftGear(1);
-    mycar->accelerate();
-    mycar->stopEngine();
-    mycar->brake();
+   cout<<" current speed of car is : "<<mysportsCar->get_currentspeed()<<endl;
 
+   delete mysportsCar;
 
     return 0;
 }
