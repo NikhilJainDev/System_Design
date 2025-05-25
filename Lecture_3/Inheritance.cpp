@@ -1,6 +1,24 @@
 #include<iostream>
 #include<string>
 using namespace std;
+
+
+class A{
+    public:
+    void sayHello(){
+        cout<<" Hello to A "<<endl;
+    }
+};
+
+class B : public A{
+    public:
+    void SayHi(){
+        cout<<" Hy to B "<<endl;
+    }
+};
+
+
+
 class Grandparent{
     public:
     Grandparent(){
@@ -21,8 +39,15 @@ class child : public Parent{
     }
 
 };
+
+
+
 int main()
 {
     child ch;
+
+    B * bb = new B();
+    bb->sayHello(); // calling method of class A 
+    bb->SayHi(); // calling method of class B 
 return 0;
 }
